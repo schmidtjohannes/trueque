@@ -13,6 +13,10 @@ export class AppComponent {
   // Define a users property to hold our user data
   users: Array<any>;
 
+  title: string = 'My first AGM project';
+  lat: number = 51.678418;
+  lng: number = 7.809007;
+
   // Create an instance of the DataService through dependency injection
   constructor(private _dataService: DataService) {
 
