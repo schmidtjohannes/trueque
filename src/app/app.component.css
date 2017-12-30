@@ -1,4 +1,8 @@
 agm-map {
-  height: 300px;
-  width: 75%;
+  height: 400px;
+  width: 400px;
 }
+#menu-parent-div > * {
+  display:inline-block;
+}
+

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MouseEvent as AGMMouseEvent } from '@agm/core';
 
 // Import the DataService
 import { DataService } from './data.service';
@@ -60,13 +61,17 @@ export class AppComponent {
     this.currentMarkerIndex = idx;
   }
 
-  mapClicked($event: MouseEvent) {
-    console.log($event);
+  mapClicked(event: AGMMouseEvent) {
+    console.log('clicked on map, lat:' + event.coords.lat + ' lng:' + event.coords.lng);
     if (!this.isAddModeEnabled) {
       return;
     }
+    
+    this.lat = event.coords.lat;
+    this.lng = event.coords.lng;
+
     this.producers.push(
-      new Producer('Nuevo Registro', $event.coords.lat, $event.coords.lng)
+      new Producer('Nuevo Registro', event.coords.lat, event.coords.lng)
     );
     this.isAddModeEnabled = false;
   }

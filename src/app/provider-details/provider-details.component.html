@@ -1,0 +1,43 @@
+<div *ngIf="!name; else forminfo">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="provider-form" [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+            <mat-form-field>
+              <input type="text" formControlName="name" matInput placeholder="Nombre/Apellido" required>
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea formControlName="description" matInput placeholder="Descripción" required></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input [value]="longitude" type="text" formControlName="longitude" matInput placeholder="Longitude" required>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input [value]="latitude" type="text" formControlName="latitude" matInput placeholder="Latitude" required>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input type="text" formControlName="email" matInput placeholder="email" required>
+            </mat-form-field>
+
+            <button type="submit" mat-raised-button color="accent" [disabled]="!rForm.valid">Guardar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+<ng-template #forminfo>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ savedTitle }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{ name }}</h1>
+      <p>{{ description }}</p>
+    </mat-card-content>
+  </mat-card>
+</ng-template>

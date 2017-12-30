@@ -1,10 +1,15 @@
 <ul>
   <li *ngFor="let user of users">{{ user.name }}</li>
 </ul>
-
-<agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
-  <agm-marker *ngFor="let producer of producers; let i = index" [latitude]="producer.lat" [longitude]="producer.lng" [markerDraggable]="isEditable" (markerClick)="setCurrentMarkerIndex(i)"></agm-marker>
-</agm-map>
+<div id="menu-parent-div">
+  <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapClicked($event)">
+    <agm-marker *ngFor="let producer of producers; let i = index" [latitude]="producer.lat" [longitude]="producer.lng" [markerDraggable]="isEditable" (markerClick)="setCurrentMarkerIndex(i)"></agm-marker>
+  </agm-map>
+  <trueque-provider-details style="vertical-align: top;"
+    [longitude]="lng"
+    [latitude]="lat">
+  </trueque-provider-details>
+</div>
 <mat-button-toggle (click)="switchEditMode()">Edit!</mat-button-toggle>
 <mat-button-toggle (click)="enableAddMode()">New Marker!</mat-button-toggle>
 <button mat-button (click)="deleteItem()">Remove</button>
