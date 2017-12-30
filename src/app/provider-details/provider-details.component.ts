@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./provider-details.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class ProviderDetailsComponent implements OnInit, OnChanges {
+export class ProviderDetailsComponent implements OnInit {
 
   title:string = 'Agregar nuevo vivero';
   savedTitle:string = 'Nuevo vivero guardado';
