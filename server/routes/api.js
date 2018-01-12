@@ -42,4 +42,25 @@ router.get('/users', (req, res) => {
     });
 });
 
+router.post('/producer', (req, res) => {
+  connection((db) => {
+    db.collection('producers')
+      .insertOne(req.body, function (error, response) {
+        if(error) {
+          sendError(err, res);
+        } else {
+          return res.json(response.ops[0])
+        }
+      });
+//      .insertOne(req.body)
+//      .then((producer) => {
+//                response.data = producer;
+//                res.json(response);
+//      })
+//      .catch((err) => {
+//        sendError(err, res);
+//      });
+  });
+});
+
 module.exports = router;

@@ -1,6 +1,9 @@
 import { Input, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { DataService } from '../data.service';
+import { Producer } from '../producer';
+
 @Component({
   selector: 'trueque-provider-details',
   templateUrl: './provider-details.component.html',
@@ -19,7 +22,7 @@ export class ProviderDetailsComponent implements OnInit {
   @Input() latitude:number;
   email:string = '';
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private _dataService: DataService) {
     this.rForm = fb.group({
       'name' : [null, Validators.required],
       'description' : [null, Validators.compose([Validators.required, Validators.minLength(15), Validators.maxLength(500)])],
